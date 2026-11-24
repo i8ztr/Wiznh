@@ -1336,6 +1336,8 @@ dialog::backdrop{
 #onboarding .onboard-box{margin:auto}
 /* Better tap feedback */
 button{touch-action:manipulation}
+
+.sms-visual-guide{display:grid;gap:12px}.sms-visual-step{background:#0f0d14;border:1px solid #332d40;border-radius:18px;overflow:hidden}.sms-visual-step img{width:100%;display:block}.sms-visual-caption{padding:12px 13px;font-weight:900}.sms-visual-caption span{display:block;color:var(--muted);font-size:12px;font-weight:500;margin-top:4px;line-height:1.6}.sms-flow{border-radius:18px;width:100%;display:block;border:1px solid #3b3049}.sms-visual-badge{display:inline-flex;padding:5px 9px;border-radius:99px;background:#26183a;color:#d2a9ff;font-size:11px;margin-bottom:8px}
 </style>
 <style>
 
@@ -2109,13 +2111,18 @@ button{touch-action:manipulation}
         </div>
 
         <div class="card sms-card">
-          <div class="sms-step"><div class="sms-num">1</div><div><b>افتح الاختصارات</b><div class="page-subtitle">اضغط الزر فوق، أو افتح تطبيق الاختصارات يدويًا.</div></div></div>
-          <div class="sms-step"><div class="sms-num">2</div><div><b>التشغيل الآلي ← رسالة</b><div class="page-subtitle">أنشئ أتمتة عند وصول رسالة، واستخدم كلمة مثل «شراء» إذا ما تقدر تحدد مرسل البنك.</div></div></div>
-          <div class="sms-step"><div class="sms-num">3</div><div><b>مرر نص الرسالة</b><div class="page-subtitle">استخدم «الحصول على النص من الإدخال» ثم «ترميز URL».</div></div></div>
-          <div class="sms-step"><div class="sms-num">4</div><div><b>افتح رابط وِزنة</b><div class="page-subtitle">استخدم رابط Wiznah2 التالي، ثم أضف النص المشفّر بعد <b>wiznah_sms=</b>:</div>
-            <div class="sms-code">https://i8ztr.github.io/Wiznah2/?wiznah_sms=TEXT</div>
-          </div></div>
-          <div class="sms-step"><div class="sms-num">5</div><div><b>أوقف «اسأل قبل التشغيل»</b><div class="page-subtitle">عشان الأتمتة تشتغل تلقائيًا عند وصول رسالة مطابقة.</div></div></div>
+          <div class="sms-visual-badge">📸 الشرح بالصور — داخل وِزنة</div>
+          <div style="font-weight:900;font-size:18px;margin-bottom:10px">بدل الكلام، امشِ مع الصور خطوة بخطوة</div>
+          <div class="sms-visual-guide">
+            <div class="sms-visual-step"><img src="assets/steps/step1.jpg" alt="الخطوة الأولى"><div class="sms-visual-caption">1. افتح تطبيق الاختصارات<span>ابدأ من تطبيق الاختصارات على الآيفون.</span></div></div>
+            <div class="sms-visual-step"><img src="assets/steps/step2.jpg" alt="الخطوة الثانية"><div class="sms-visual-caption">2. اختر الأتمتة الشخصية<span>أنشئ أتمتة مرتبطة بوصول رسالة البنك.</span></div></div>
+            <div class="sms-visual-step"><img src="assets/steps/step3.jpg" alt="الخطوة الثالثة"><div class="sms-visual-caption">3. مرّر نص الرسالة<span>استخدم محتوى الرسالة كمدخل للاختصار.</span></div></div>
+            <div class="sms-visual-step"><img src="assets/steps/step4.jpg" alt="الخطوة الرابعة"><div class="sms-visual-caption">4. شغّل إجراء وِزنة<span>هذه الخطوة هي التي ترسل بيانات العملية إلى وِزنة.</span></div></div>
+          </div>
+        </div>
+        <div class="card sms-card">
+          <div style="font-weight:900;margin-bottom:8px">🔄 شكل العملية كاملة</div>
+          <img class="sms-flow" src="assets/steps/flow.jpg" alt="تدفق الرسالة إلى وزنة">
         </div>
 
         <div class="card sms-card">
