@@ -1380,7 +1380,7 @@ button{touch-action:manipulation}
   touch-action:pan-y;
   overscroll-behavior-y:auto;
 }
-.screen.active{display:block !important;}
+.screen.active{display:block !important;z-index:20;pointer-events:auto;}
 .screen .page{
   width:100%;
   min-height:100%;
@@ -5295,6 +5295,23 @@ function resetData(){
 
 
 /* =========================================================
+   ONBOARDING CLICK SAFETY
+   Direct listeners ensure the first-run buttons remain clickable
+   even if a screen-level layout rule changes.
+========================================================= */
+
+document.addEventListener("click",event=>{
+  const btn = event.target.closest("[data-onboard]");
+  if(!btn) return;
+  const action = btn.dataset.onboard;
+  if(action === "next") nextOnboarding();
+  else if(action === "back") backOnboarding();
+  else if(action === "finish") finishOnboarding();
+  else if(action === "add-commitment") openCommitmentForm();
+  else if(action === "add-debt") openDebtForm();
+}, true);
+
+/* =========================================================
    GLOBAL EVENT DELEGATION
 ========================================================= */
 
@@ -5346,36 +5363,8 @@ document.addEventListener("click",event=>{
   }
 
 
-  /* ONBOARD */
-
-  const onboardAction =
-    target.dataset.onboard;
-
-  if(onboardAction==="next"){
-    nextOnboarding();
-    return;
-  }
-
-  if(onboardAction==="back"){
-    backOnboarding();
-    return;
-  }
-
-  if(onboardAction==="finish"){
-    finishOnboarding();
-    return;
-  }
-
-  if(onboardAction==="add-commitment"){
-    openCommitmentForm();
-    return;
-  }
-
-  if(onboardAction==="add-debt"){
-    openDebtForm();
-    return;
-  }
-
+  /* ONBOARDING IS HANDLED BY THE CAPTURE-PHASE SAFETY LISTENER ABOVE */
+  if(target.dataset.onboard){ return; }
 
   /* ACTIONS */
 
@@ -5681,7 +5670,7 @@ function start(){
 
 start();
 
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=34").catch(()=>{}));}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=36").catch(()=>{}));}
 
 importSMSFromURL();
 </script>
