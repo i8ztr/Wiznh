@@ -3027,6 +3027,9 @@ function saveCommitment(){
   const amount =
     Number(document.getElementById("modalAmount")?.value || 0);
 
+  const dueDay =
+    Number(document.getElementById("modalDueDay")?.value || 1);
+
   if(!name){
     toast("اكتب اسم الالتزام","bad");
     return;
@@ -3034,6 +3037,11 @@ function saveCommitment(){
 
   if(amount<=0){
     toast("اكتب مبلغ صحيح","bad");
+    return;
+  }
+
+  if(dueDay<1 || dueDay>31){
+    toast("يوم الاستحقاق غير صحيح","bad");
     return;
   }
 
